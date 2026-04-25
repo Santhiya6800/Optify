@@ -1,6 +1,10 @@
 
 
 
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -209,6 +213,28 @@
     border-radius: 50%;
     background: var(--accent-light);
     animation: pulse 1.6s infinite;
+  }
+  .brand-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -1.8px;
+    color: var(--white);
+    margin-bottom: 14px;
+    text-shadow: 0 18px 50px rgba(0,0,0,0.28);
+    animation: fadeUp .7s .2s ease both;
+  }
+
+  .brand-tagline {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.6rem);
+    font-weight: 500;
+    line-height: 1.35;
+    color: rgba(255,255,255,0.82);
+    max-width: 760px;
+    margin-bottom: 22px;
+    animation: fadeUp .7s .28s ease both;
   }
 
   .hero-heading {
@@ -880,6 +906,105 @@
     }
   }
 
+
+  @media (max-width: 600px) {
+    .brand-title {
+      font-size: clamp(2.35rem, 13vw, 3.4rem);
+      letter-spacing: -1px;
+    }
+
+    .brand-tagline {
+      font-size: 1rem;
+      max-width: 100%;
+    }
+  }
+
+
+  /* HERO RIGHT SIDE 3D ANIMATED SLOGAN */
+  .hero-side-slogan {
+    position: absolute;
+    right: 6%;
+    top: 50%;
+    z-index: 2;
+    transform: translateY(-50%) perspective(900px) rotateX(8deg) rotateY(-14deg);
+    transform-style: preserve-3d;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    text-align: right;
+    color: rgba(255,255,255,0.22);
+    pointer-events: none;
+    user-select: none;
+    text-transform: uppercase;
+    letter-spacing: -0.06em;
+    animation: sloganFloat3D 6s ease-in-out infinite, sloganGlowPulse 2.8s ease-in-out infinite;
+    filter: drop-shadow(0 0 18px rgba(79,142,247,0.45));
+  }
+
+  .hero-side-slogan span {
+    display: block;
+    transform: translateZ(35px);
+    background: linear-gradient(90deg, rgba(255,255,255,0.95), rgba(122,179,255,0.85), rgba(173,255,47,0.7));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow:
+      0 0 18px rgba(79,142,247,0.55),
+      0 0 34px rgba(173,255,47,0.20),
+      0 18px 45px rgba(0,0,0,0.35);
+  }
+
+  .hero-side-slogan span:nth-child(2) {
+    animation-delay: .25s;
+    transform: translateZ(55px);
+  }
+
+  .hero-side-slogan span:nth-child(3) {
+    animation-delay: .5s;
+    transform: translateZ(75px);
+  }
+
+  @keyframes sloganFloat3D {
+    0%, 100% {
+      transform: translateY(-50%) perspective(900px) rotateX(8deg) rotateY(-14deg) translate3d(0, 0, 0) scale(1);
+    }
+    50% {
+      transform: translateY(-54%) perspective(900px) rotateX(12deg) rotateY(-8deg) translate3d(-10px, -12px, 35px) scale(1.03);
+    }
+  }
+
+  @keyframes sloganGlowPulse {
+    0%, 100% {
+      opacity: 0.18;
+      filter: drop-shadow(0 0 12px rgba(79,142,247,0.35));
+    }
+    50% {
+      opacity: 0.45;
+      filter:
+        drop-shadow(0 0 26px rgba(79,142,247,0.9))
+        drop-shadow(0 0 18px rgba(173,255,47,0.35));
+    }
+  }
+
+  @media (max-width: 960px) {
+    .hero-side-slogan {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-side-slogan {
+      animation: none !important;
+      opacity: 0.22;
+      transform: translateY(-50%);
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -889,9 +1014,9 @@
 <div class="noise-overlay" aria-hidden="true"></div>
 
 <nav aria-label="Main navigation">
-  <a href="#hero" class="nav-logo" aria-label="Optify home">
+  <a href="#hero" class="nav-logo" aria-label="Optify Digital Solutions home">
     <img src="images/logo.png" alt="Optify Digital Solutions Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
-    <span class="nav-logo-text" style="display:none;">Optify<span>.</span></span>
+    <span class="nav-logo-text" style="display:none;">Optify Digital Solutions</span>
   </a>
   <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
     <span></span>
@@ -916,7 +1041,8 @@
     <div class="hero-orb three" data-depth="38" aria-hidden="true"></div>
     <div class="hero-content">
       <div class="hero-badge">Digital Growth Partner</div>
-      <h1 class="hero-heading" aria-label="Smart Digital Solutions for Modern Business Growth"><span class="word" style="animation-delay:.16s">Smart</span> <span class="word" style="animation-delay:.235s">Digital</span> <span class="word" style="animation-delay:.31s">Solutions</span> <span class="word" style="animation-delay:.385s">for</span> <span class="word accent" style="animation-delay:.46s">Modern</span> <span class="word accent" style="animation-delay:.535s">Business</span> <span class="word" style="animation-delay:.61s">Growth</span></h1>
+      <h1 class="brand-title">Optify Digital Solutions</h1>
+      <p class="brand-tagline">Smart Digital Solutions for Modern Business Growth</p>
       <p class="hero-sub">We help businesses grow online with SEO, website development, social media marketing, and performance-driven digital strategies.</p>
       <div class="hero-btns">
         <a href="#contact" class="btn-primary magnetic">Get Free Consultation</a>
@@ -927,6 +1053,11 @@
         <div class="stat-item"><div class="stat-num">6+</div><div class="stat-label">Core Services</div></div>
         <div class="stat-item"><div class="stat-num">3x</div><div class="stat-label">Avg. Growth</div></div>
       </div>
+    </div>
+    <div class="hero-side-slogan" aria-hidden="true">
+      <span>Optimize.</span>
+      <span>Grow.</span>
+      <span>Succeed.</span>
     </div>
   </section>
 
@@ -1066,7 +1197,7 @@
 </main>
 
 <footer>
-  <div class="footer-logo">Optify<span>.</span></div>
+  <div class="footer-logo">Optify Digital Solutions</div>
   <div class="footer-copy">© <span id="year"></span> Optify Digital Solutions | All Rights Reserved</div>
   <div class="footer-links">
     <a href="#hero">Home</a>
@@ -1311,6 +1442,44 @@
     hero.addEventListener('mouseleave', () => { document.querySelector('.hero-content').style.transform = ''; });
   }
 
+</script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
 </script>
 </body>
 </html>
